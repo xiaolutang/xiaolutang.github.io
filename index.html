@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tang Xiaolu - 个人主页</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --primary: #6366F1;
+      --primary-light: #818CF8;
+      --bg: #0F172A;
+      --bg-card: #1E293B;
+      --text: #E2E8F0;
+      --text-muted: #94A3B8;
+      --border: #334155;
+      --accent: #22D3EE;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    a { color: var(--primary-light); text-decoration: none; }
+    a:hover { color: var(--accent); }
+
+    /* Nav */
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 100;
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 60px;
+    }
+    nav .logo { font-size: 1.1rem; font-weight: 700; color: var(--text); }
+    nav .links { display: flex; gap: 1.5rem; }
+    nav .links a { color: var(--text-muted); font-size: 0.9rem; transition: color 0.2s; }
+    nav .links a:hover, nav .links a.active { color: var(--accent); }
+
+    /* Hero */
+    .hero {
+      padding: 8rem 2rem 4rem;
+      max-width: 720px; margin: 0 auto;
+      text-align: center;
+    }
+    .hero h1 { font-size: 2.5rem; font-weight: 800; margin-bottom: 1rem; }
+    .hero h1 span { color: var(--primary-light); }
+    .hero p { color: var(--text-muted); font-size: 1.1rem; max-width: 520px; margin: 0 auto 2rem; }
+    .hero .avatar {
+      width: 120px; height: 120px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      margin: 0 auto 1.5rem;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2.5rem; font-weight: 700; color: #fff;
+    }
+    .hero .social { display: flex; gap: 1rem; justify-content: center; }
+    .hero .social a {
+      padding: 0.5rem 1.2rem; border-radius: 8px;
+      border: 1px solid var(--border); color: var(--text-muted);
+      font-size: 0.85rem; transition: all 0.2s;
+    }
+    .hero .social a:hover { border-color: var(--primary); color: var(--text); background: rgba(99,102,241,0.1); }
+
+    /* Section */
+    section {
+      max-width: 900px; margin: 0 auto;
+      padding: 3rem 2rem;
+    }
+    section h2 {
+      font-size: 1.5rem; font-weight: 700; margin-bottom: 1.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* Projects */
+    .project-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.2rem; }
+    .project-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 12px; padding: 1.5rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .project-card:hover { border-color: var(--primary); transform: translateY(-2px); }
+    .project-card h3 { font-size: 1.1rem; margin-bottom: 0.5rem; }
+    .project-card p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem; flex: 1; }
+    .project-card .tags { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem; }
+    .project-card .tag {
+      background: rgba(99,102,241,0.15); color: var(--primary-light);
+      padding: 0.15rem 0.6rem; border-radius: 4px; font-size: 0.75rem;
+    }
+    .project-card .actions { display: flex; gap: 0.8rem; }
+    .project-card .btn {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      padding: 0.4rem 1rem; border-radius: 8px; font-size: 0.85rem;
+      transition: all 0.2s; cursor: pointer; border: none;
+    }
+    .btn-primary { background: var(--primary); color: #fff; }
+    .btn-primary:hover { background: var(--primary-light); }
+    .btn-outline { background: transparent; border: 1px solid var(--border); color: var(--text-muted); }
+    .btn-outline:hover { border-color: var(--primary); color: var(--text); }
+
+    /* Blog */
+    .blog-list { display: flex; flex-direction: column; gap: 1rem; }
+    .blog-item {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1rem 1.2rem; background: var(--bg-card);
+      border: 1px solid var(--border); border-radius: 8px;
+      transition: border-color 0.2s;
+    }
+    .blog-item:hover { border-color: var(--primary); }
+    .blog-item .title { font-size: 1rem; }
+    .blog-item .date { color: var(--text-muted); font-size: 0.85rem; white-space: nowrap; margin-left: 1rem; }
+
+    /* Footer */
+    footer {
+      text-align: center; padding: 3rem 2rem;
+      color: var(--text-muted); font-size: 0.85rem;
+      border-top: 1px solid var(--border);
+      margin-top: 3rem;
+    }
+
+    @media (max-width: 640px) {
+      .hero h1 { font-size: 1.8rem; }
+      nav .links { gap: 1rem; }
+      .project-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav>
+    <div class="logo">TXL</div>
+    <div class="links">
+      <a href="#projects" class="active">项目</a>
+      <a href="#blog">博客</a>
+      <a href="https://github.com/xiaolutang" target="_blank">GitHub</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="avatar">T</div>
+    <h1>你好，我是 <span>Tang Xiaolu</span></h1>
+    <p>独立开发者，热爱用技术解决实际问题。专注于移动端工具、AI 应用与效率提升。</p>
+    <div class="social">
+      <a href="https://github.com/xiaolutang" target="_blank">GitHub</a>
+      <a href="mailto:your@email.com">联系我</a>
+    </div>
+  </div>
+
+  <!-- Projects -->
+  <section id="projects">
+    <h2>开源项目</h2>
+    <div class="project-grid">
+
+      <div class="project-card">
+        <h3>终端助手</h3>
+        <p>手机上的终端工具，随时随地操作服务器。</p>
+        <div class="tags">
+          <span class="tag">移动端</span>
+          <span class="tag">终端</span>
+        </div>
+        <div class="actions">
+          <a href="#" class="btn btn-primary">下载</a>
+          <a href="#" class="btn btn-outline">源码</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <h3>个人成长助手</h3>
+        <p>整合任务管理、灵感收集、学习笔记与项目追踪的个人知识管理工具。</p>
+        <div class="tags">
+          <span class="tag">Python</span>
+          <span class="tag">React</span>
+          <span class="tag">AI</span>
+        </div>
+        <div class="actions">
+          <a href="https://github.com/xiaolutang/personal-growth-assistant" class="btn btn-outline">源码</a>
+        </div>
+      </div>
+
+      <!-- 新项目模板：复制这个卡片添加更多项目 -->
+      <!--
+      <div class="project-card">
+        <h3>项目名称</h3>
+        <p>项目简介</p>
+        <div class="tags">
+          <span class="tag">标签1</span>
+        </div>
+        <div class="actions">
+          <a href="#" class="btn btn-primary">下载</a>
+          <a href="#" class="btn btn-outline">源码</a>
+        </div>
+      </div>
+      -->
+
+    </div>
+  </section>
+
+  <!-- Blog -->
+  <section id="blog">
+    <h2>最新文章</h2>
+    <div class="blog-list">
+      <a class="blog-item" href="#">
+        <span class="title">即将发布...</span>
+        <span class="date">敬请期待</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2026 Tang Xiaolu &middot; Built with GitHub Pages
+  </footer>
+
+</body>
+</html>
