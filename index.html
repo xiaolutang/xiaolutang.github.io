@@ -105,6 +105,33 @@
     .btn-outline { background: transparent; border: 1px solid var(--border); color: var(--text-muted); }
     .btn-outline:hover { border-color: var(--primary); color: var(--text); }
 
+    /* Product Detail */
+    .product-detail {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 16px; padding: 2.5rem; margin-top: 1.5rem;
+    }
+    .product-detail .badge {
+      display: inline-block; background: rgba(34,211,238,0.15); color: var(--accent);
+      padding: 0.25rem 0.8rem; border-radius: 20px; font-size: 0.8rem; margin-bottom: 1rem;
+    }
+    .product-detail h3 { font-size: 1.8rem; font-weight: 700; margin-bottom: 0.8rem; }
+    .product-detail .desc { color: var(--text-muted); font-size: 1.05rem; margin-bottom: 2rem; line-height: 1.8; }
+    .feature-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1.2rem; margin-bottom: 2rem; }
+    .feature-item {
+      padding: 1.2rem; background: rgba(99,102,241,0.06);
+      border: 1px solid var(--border); border-radius: 10px;
+    }
+    .feature-item .icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
+    .feature-item h4 { font-size: 0.95rem; margin-bottom: 0.3rem; }
+    .feature-item p { color: var(--text-muted); font-size: 0.85rem; }
+    .product-detail .download-area { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .product-detail .btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.7rem 1.5rem; border-radius: 10px; font-size: 0.95rem;
+      transition: all 0.2s; cursor: pointer; border: none;
+    }
+    .btn-lg { padding: 0.8rem 2rem; font-size: 1rem; }
+
     /* Blog */
     .blog-list { display: flex; flex-direction: column; gap: 1rem; }
     .blog-item {
@@ -138,7 +165,7 @@
   <nav>
     <div class="logo">TXL</div>
     <div class="links">
-      <a href="#projects" class="active">项目</a>
+      <a href="#product" class="active">产品</a>
       <a href="#blog">博客</a>
       <a href="https://github.com/xiaolutang" target="_blank">GitHub</a>
     </div>
@@ -155,53 +182,46 @@
     </div>
   </div>
 
-  <!-- Projects -->
-  <section id="projects">
-    <h2>开源项目</h2>
-    <div class="project-grid">
+  <!-- Product -->
+  <section id="product">
+    <h2>我的产品</h2>
 
-      <div class="project-card">
-        <h3>终端助手</h3>
-        <p>手机上的终端工具，随时随地操作服务器。</p>
-        <div class="tags">
-          <span class="tag">移动端</span>
-          <span class="tag">终端</span>
+    <div class="product-detail">
+      <span class="badge">移动端工具</span>
+      <h3>终端助手</h3>
+      <p class="desc">
+        一款让你在手机上轻松操作终端的应用。无论身在何处，都能通过手机远程连接服务器，执行命令、查看日志、管理文件。
+        简洁的界面设计，让移动端操作终端不再是难题。
+      </p>
+
+      <div class="feature-list">
+        <div class="feature-item">
+          <div class="icon">&#x1f4f1;</div>
+          <h4>随时随地连接</h4>
+          <p>通过 SSH 远程连接服务器，手机就是你的终端。</p>
         </div>
-        <div class="actions">
-          <a href="#" class="btn btn-primary">下载</a>
-          <a href="#" class="btn btn-outline">源码</a>
+        <div class="feature-item">
+          <div class="icon">&#x2328;&#xFE0F;</div>
+          <h4>完整终端体验</h4>
+          <p>支持常用命令、快捷键，操作流畅自然。</p>
+        </div>
+        <div class="feature-item">
+          <div class="icon">&#x1f4c1;</div>
+          <h4>文件管理</h4>
+          <p>浏览、编辑服务器文件，像在电脑上一样方便。</p>
+        </div>
+        <div class="feature-item">
+          <div class="icon">&#x1f512;</div>
+          <h4>安全可靠</h4>
+          <p>加密连接，密钥认证，保障服务器访问安全。</p>
         </div>
       </div>
 
-      <div class="project-card">
-        <h3>个人成长助手</h3>
-        <p>整合任务管理、灵感收集、学习笔记与项目追踪的个人知识管理工具。</p>
-        <div class="tags">
-          <span class="tag">Python</span>
-          <span class="tag">React</span>
-          <span class="tag">AI</span>
-        </div>
-        <div class="actions">
-          <a href="https://github.com/xiaolutang/personal-growth-assistant" class="btn btn-outline">源码</a>
-        </div>
+      <div class="download-area">
+        <a href="#" class="btn btn-primary btn-lg">下载体验</a>
       </div>
-
-      <!-- 新项目模板：复制这个卡片添加更多项目 -->
-      <!--
-      <div class="project-card">
-        <h3>项目名称</h3>
-        <p>项目简介</p>
-        <div class="tags">
-          <span class="tag">标签1</span>
-        </div>
-        <div class="actions">
-          <a href="#" class="btn btn-primary">下载</a>
-          <a href="#" class="btn btn-outline">源码</a>
-        </div>
-      </div>
-      -->
-
     </div>
+
   </section>
 
   <!-- Blog -->
